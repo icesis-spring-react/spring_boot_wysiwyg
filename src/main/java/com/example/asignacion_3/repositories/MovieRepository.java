@@ -33,8 +33,12 @@ public class MovieRepository {
     }
 
     public boolean save(Movie movie) {
-        movie.setId(movies.isEmpty() ? 1 : movies.get(movies.size()-1).getId() + 1);
+        movie.setId(movies.isEmpty() ? 1 : movies.get(movies.size() - 1).getId() + 1);
 
         return movies.add(movie);
+    }
+
+    public Movie findBy(Long movieID) {
+        return movies.stream().filter(movie -> movie.getId() == movieID).findFirst().orElse(null);
     }
 }

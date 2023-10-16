@@ -22,4 +22,8 @@ public class MovieService {
         return movieRepository.save(movie);
     }
 
+    public Movie getMovieById(Long movieID) {
+        return movieRepository.findBy(movieID);
+    }
+
 }

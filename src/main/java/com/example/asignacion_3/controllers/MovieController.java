@@ -2,6 +2,7 @@ package com.example.asignacion_3.controllers;
 
 import com.example.asignacion_3.models.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.asignacion_3.services.MovieService;
 
@@ -25,6 +26,17 @@ public class MovieController {
         return movieServices.addMovie(movie);
     }
 
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Movie> findMovie(@PathVariable Long id) {
+        Movie movie = movieServices.getMovieById(id);
+
+        if (movie != null) {
+            return ResponseEntity.ok(movie);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 
     @GetMapping("/error")
     public String error() {

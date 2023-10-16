@@ -21,4 +21,8 @@ public class DirectorService {
         return directorRepository.save(director);
     }
 
+    public Director getDirectorById(Long directorID) {
+        return directorRepository.findBy(directorID);
+    }
+
 }
