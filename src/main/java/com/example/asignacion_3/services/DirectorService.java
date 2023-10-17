@@ -1,6 +1,7 @@
 package com.example.asignacion_3.services;
 
 import com.example.asignacion_3.models.Director;
+import com.example.asignacion_3.models.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.asignacion_3.repositories.DirectorRepository;
@@ -31,6 +32,10 @@ public class DirectorService {
 
     public boolean removeDirector(Long id) {
         return directorRepository.deleteById(id);
+    }
+
+    public ArrayList<Movie> getMoviesByDirectorId(Long id) {
+        return directorRepository.findMoviesByDirectorId(id);
     }
 
 }

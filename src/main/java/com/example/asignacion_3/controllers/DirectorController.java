@@ -1,6 +1,7 @@
 package com.example.asignacion_3.controllers;
 
 import com.example.asignacion_3.models.Director;
+import com.example.asignacion_3.models.Movie;
 import com.example.asignacion_3.services.DirectorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -52,5 +53,10 @@ public class DirectorController {
         }
 
         return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/{id}/movies")
+    public ArrayList<Movie> findDirectorMovies(@PathVariable Long id) {
+        return directorService.getMoviesByDirectorId(id);
     }
 }

@@ -21,7 +21,7 @@ public class MovieRepository {
     private static ArrayList<Movie> movies = new ArrayList<>();
 
     static {
-        Movie m1 = new Movie("War dogs", "Action", "1", new Date(123, 9, 16));
+        Movie m1 = new Movie("War dogs", "Action", 1, new Date(123, 9, 16));
 
         m1.setId(1);
 
@@ -50,9 +50,11 @@ public class MovieRepository {
             aux.setGenre(movie.getGenre());
             aux.setDirectorId(movie.getDirectorId());
             aux.setReleaseDate(movie.getReleaseDate());
+
+            return true;
         }
 
-        return aux != null;
+        return false;
     }
 
     public boolean deleteById(Long id) {
