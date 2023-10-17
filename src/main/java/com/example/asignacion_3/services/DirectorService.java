@@ -25,4 +25,12 @@ public class DirectorService {
         return directorRepository.findBy(directorID);
     }
 
+    public boolean updateDirector(Long id, Director director) {
+        return directorRepository.update(id, director);
+    }
+
+    public boolean removeDirector(Long id) {
+        return directorRepository.deleteById(id);
+    }
+
 }

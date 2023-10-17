@@ -35,4 +35,22 @@ public class DirectorController {
 
         return ResponseEntity.notFound().build();
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Boolean> updateDirector(@PathVariable Long id, @RequestBody Director director) {
+        if (directorService.updateDirector(id, director)) {
+            return ResponseEntity.ok(true);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> deleteDirector(@PathVariable Long id) {
+        if (directorService.removeDirector(id)) {
+            return ResponseEntity.ok(true);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 }

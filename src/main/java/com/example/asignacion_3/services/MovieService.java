@@ -26,4 +26,12 @@ public class MovieService {
         return movieRepository.findBy(movieID);
     }
 
+    public boolean updateMovie(Long movieID, Movie movie) {
+        return movieRepository.update(movieID, movie);
+    }
+
+    public boolean removeMovie(Long id) {
+        return movieRepository.deleteById(id);
+    }
+
 }

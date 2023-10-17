@@ -41,4 +41,21 @@ public class MovieRepository {
     public Movie findBy(Long movieID) {
         return movies.stream().filter(movie -> movie.getId() == movieID).findFirst().orElse(null);
     }
+
+    public boolean update(Long id, Movie movie) {
+        Movie aux = findBy(id);
+
+        if (aux != null) {
+            aux.setName(movie.getName());
+            aux.setGenre(movie.getGenre());
+            aux.setDirectorId(movie.getDirectorId());
+            aux.setReleaseDate(movie.getReleaseDate());
+        }
+
+        return aux != null;
+    }
+
+    public boolean deleteById(Long id) {
+        return movies.remove(findBy(id));
+    }
 }

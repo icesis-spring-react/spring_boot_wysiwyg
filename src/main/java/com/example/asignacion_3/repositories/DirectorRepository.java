@@ -33,4 +33,18 @@ public class DirectorRepository {
         return directors.stream().filter(director -> director.getId() == directorID).findFirst().orElse(null);
     }
 
+
+    public boolean update(Long id, Director director) {
+        Director aux = findBy(id);
+
+        if (aux != null) {
+            aux.setName(director.getName());
+        }
+
+        return aux != null;
+    }
+
+    public boolean deleteById(Long id) {
+        return directors.remove(findBy(id));
+    }
 }

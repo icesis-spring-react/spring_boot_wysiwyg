@@ -38,6 +38,24 @@ public class MovieController {
         return ResponseEntity.notFound().build();
     }
 
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Boolean> updateMovie(@PathVariable Long id, @RequestBody Movie movie) {
+        if (movieServices.updateMovie(id, movie)) {
+            return ResponseEntity.ok(true);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> deleteMovie(@PathVariable Long id) {
+        if (movieServices.removeMovie(id)) {
+            return ResponseEntity.ok(true);
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
     @GetMapping("/error")
     public String error() {
         return "Fucking error";
